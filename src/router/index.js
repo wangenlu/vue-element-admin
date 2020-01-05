@@ -105,12 +105,30 @@ export const constantRouterMap = [
 ]
 
 export default new Router({
-  // mode: 'history', // require service support
+  mode: 'history',
   scrollBehavior: () => ({ y: 0 }),
   routes: constantRouterMap
 })
 
 export const asyncRouterMap = [
+  {
+    path: '/test',
+    component: Layout,
+    name: 'Test',
+    meta: {
+      title: '服务测试',
+      icon: 'edit'
+
+    },
+    children: [
+      {
+        name: 'TestRedis',
+        path: '/testredis',
+        component: () => import('@/views/test/test'),
+        meta: { title: 'serverTest' }
+      }
+    ]
+  },
   {
     path: '/permission',
     component: Layout,

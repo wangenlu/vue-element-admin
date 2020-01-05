@@ -9,7 +9,15 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/service': { 
+        target: 'http://localhost:8080/', 
+        changeOrigin: true, //开启代理
+        pathRewrite: {  // 重命名
+          '^/service': ''
+        }
+      }
+    },
 
     // Various Dev Server settings
 
